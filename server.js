@@ -13,8 +13,6 @@ app.use(express.static("public")); // Carrega CSS i altres fitxers públics
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
-app.use('/products', productsRoutes);
-
 app.set('view engine', 'ejs'); // Motor de plantilles
 app.set('views', './views'); // Ubicació de les plantilles
 
@@ -30,6 +28,13 @@ app.use((req, res, next) =>{
     }
     next()
 })
+
+app.use('/products', (req, res, next) => {
+    if (!req.session.user) {
+        return res.status(401).send('Acces no autorizat')
+    }
+    next()
+}, productsRoutes);
 
 app.post('/register', async (req,res)=>{
     //aqui el body es el cuerpo de la petición
@@ -81,13 +86,6 @@ app.get('/protected', (req,res) =>{
     const {user} = req.session
     if(!user) return res.status(401).send('Acces no autorizat')
     res.render ('protected', user)
-});
-
-// TODO: Corregir, si el usuario no esta logeado no debe mostrar los productos
-app.get('/products', (req, res) =>{
-    const {user} = req.session
-    if(!user) return res.status(401).send('Acces no autorizat')
-    res.render ('products', user)
 });
 
 app.post('/logout',(req,res)=>{
