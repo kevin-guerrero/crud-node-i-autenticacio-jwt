@@ -14,7 +14,7 @@ loginForm?.addEventListener('submit', e => {
     const username = $('#login-username').value
     const password = $('#login-password').value
 
-    fetch('/login', {
+    fetch('/auth/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ loginForm?.addEventListener('submit', e => {
             loginSpan.innerText = 'Session iniciada ..Entrando..'
             loginSpan.style.color = 'green'
             setTimeout(() => {
-                window.location.href = '/protected'
+                window.location.href = '/auth/protected'
             }, 2000)
         } else {
             loginSpan.innerText = 'Error al iniciar session'
@@ -46,7 +46,7 @@ registerForm?.addEventListener('submit', e => {
         return
     }
 
-    fetch('/register', {
+    fetch('/auth/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -58,7 +58,7 @@ registerForm?.addEventListener('submit', e => {
             registerSpan.innerText = 'Usuario registrado. ..Entrando..'
             registerSpan.style.color = 'green'
             setTimeout(() => {
-                window.location.href = '/protected'
+                window.location.href = '/auth/protected'
             }, 2000)
         } else {
             registerSpan.innerText = 'Error al registrar usuari'
@@ -70,7 +70,7 @@ registerForm?.addEventListener('submit', e => {
 //Logout
 logoutButton?.addEventListener('click', e => {
     e.preventDefault()
-    fetch('/logout', {
+    fetch('/auth/logout', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

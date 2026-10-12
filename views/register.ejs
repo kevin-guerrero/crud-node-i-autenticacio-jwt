@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login and registration</title>
+    <title>Registration</title>
     <link rel="stylesheet" href="styles.css" />
-    <script src="./js/register.js" defer></script>
+    <script src="/js/register.js" defer></script>
   </head>
   <body>
     <div class="container">
@@ -19,20 +19,6 @@
         <% } %>
 
         <% if (typeof username==='undefined' ) { %>
-            <div class="form-container">
-                <form id="login-form">
-                    <h2>Login</h2>
-                    <label for="login-username">Username:</label>
-                    <input type="text" id="login-username" name="username" required>
-
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" name="password" required>
-
-                    <button type="submit">Login</button>
-                    <span>&nbsp;</span>
-                </form>
-            </div>
-
             <div class="form-container">
                 <form id="register-form">
                     <h2>Register</h2>
@@ -49,7 +35,7 @@
                     <span>&nbsp;</span>
                 </form>
             </div>
-            <% } %>
+        <% } %>
     </div>
     
   </body>
