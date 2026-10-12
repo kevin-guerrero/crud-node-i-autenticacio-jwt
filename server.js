@@ -51,7 +51,7 @@ app.post('/register', async (req,res)=>{
 
 app.get('/',(req,res) => {
     const {user} = req.session
-    res.render("register",user)
+    res.render("index",user)
 })
 
 app.post('/login', async (req,res)=>{
