@@ -17,6 +17,7 @@
                         <strong><%= products.name %></strong>
                         <span>Categoria: <%= products.category %></span>
                         <span>Preu: €<%= products.price %></span>
+                        <a href="/products/<%= products.id %>">Editar</a>
                     </li>
                 <% }) %>
             </ul>

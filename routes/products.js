@@ -43,7 +43,7 @@ router.get("/:id", (req, res) => {
     // que conté l'atribut params i el podem consultar
     const id = parseInt(req.params.id);
     const product = data.products.find((product) => product.id === id);
-    res.json(product);
+    res.render("edit_products", { product });
 })
 
 //Creem un endpoint del tipus post per afegir un producte
@@ -71,7 +71,7 @@ router.put("/:id", (req, res) => {
         ...body,
     };
     writeData(data);
-    res.json({ message: "Product updated successfully" });
+    res.redirect("/products");
 });
 
 //Creem un endpoint per eliminar un producte
