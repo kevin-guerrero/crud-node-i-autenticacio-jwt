@@ -4,6 +4,7 @@ import bodyParser from "body-parser"; //Ho afegim per entendre que estem rebent 
 
 const router = express.Router();
 
+//Funció per llegir la informació
 const readData = () => {
     try {
         const data = fs.readFileSync("./db/db.json");
@@ -15,6 +16,7 @@ const readData = () => {
         console.log(error);
     }
 };
+
 //Funció per escriure informació
 const writeData = (data) => {
     try {
@@ -24,26 +26,17 @@ const writeData = (data) => {
         console.log(error);
     }
 }
-//Funció per llegir la informació
-//readData();
 
+//Creem un endpoint per obtenir tots els productes
 router.get("/", (req, res) => {
-    const user = { name: "Kevin" }
-    const htmlMessage = `
-   <p>Aquest és un text <strong>amb estil</strong> i un enllaç:</p>
-   <a href="https://www.example.com">Visita Example</a>`;
     const data = readData();
-    res.render("products", { user, data, htmlMessage })
-    //res.json(data.products);
-
+    if (!req.session.user) {
+        return res.status(401).send('Acces no autorizat')
+    }
+    res.render("products", { data })
 });
 
-//Creem un endpoint per obtenir tots els llibres
-router.get("/", (req, res) => {
-    const data = readData();
-    res.json(data.products);
-})
-//Creem un endpoint per obtenir un llibre per un id
+//Creem un endpoint per obtenir un producte per un id
 router.get("/:id", (req, res) => {
     const data = readData();
     //Extraiem l'id de l'url recordem que req es un objecte tipus requets
@@ -53,12 +46,11 @@ router.get("/:id", (req, res) => {
     res.json(product);
 })
 
-//Creem un endpoint del tipus post per afegir un llibre
-
+//Creem un endpoint del tipus post per afegir un producte
 router.post("/", (req, res) => {
     const data = readData();
     const body = req.body;
-    //todo lo que viene en ...body se agrega al nuevo libro
+    //todo lo que viene en ...body se agrega al nuevo producte
     const newProduct = {
         id: data.products.length + 1,
         ...body,
@@ -68,9 +60,7 @@ router.post("/", (req, res) => {
     res.json(newProduct);
 });
 
-//Creem un endpoint per modificar un llibre
-
-
+//Creem un endpoint per modificar un producte
 router.put("/:id", (req, res) => {
     const data = readData();
     const body = req.body;
@@ -84,7 +74,7 @@ router.put("/:id", (req, res) => {
     res.json({ message: "Product updated successfully" });
 });
 
-//Creem un endpoint per eliminar un llibre
+//Creem un endpoint per eliminar un producte
 router.delete("/:id", (req, res) => {
     const data = readData();
     const id = parseInt(req.params.id);
@@ -99,4 +89,3 @@ router.delete("/:id", (req, res) => {
 router.use(express.static("public")); //carpeta publica pel css
 
 export default router;
-

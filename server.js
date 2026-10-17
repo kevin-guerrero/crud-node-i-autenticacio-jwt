@@ -3,7 +3,7 @@ import methodOverride from "method-override";
 import {PORT, SECRET_JWT_KEY} from "./config.js";
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
-import productsRoutes from './routes/products.js'
+import authProducts from './routes/products.js'
 import authRoutes from './routes/auth.js'
 
 const app = express();
@@ -29,13 +29,7 @@ app.use((req, res, next) =>{
     next()
 })
 
-app.use('/products', (req, res, next) => {
-    if (!req.session.user) {
-        return res.status(401).send('Acces no autorizat')
-    }
-    next()
-}, productsRoutes);
-
+app.use('/products', authProducts);
 app.use('/auth', authRoutes);
 
 app.get('/',(req,res) => {
