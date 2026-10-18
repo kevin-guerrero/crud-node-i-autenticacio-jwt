@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creació de cançons</title>
+</head>
+<body>
+    <h1>Afegir nova cançó</h1>
+    <main>
+        <form action="/songs" method="post">
+            <label for="title">Títol de la cançó</label>
+            <input type="text" name="title" id="title" required>
+
+            <label for="artist">Artista</label>
+            <input type="text" name="artist" id="artist" required>
+            
+            <button type="submit">Afegir cançó</button>
+        </form>
+    </main>
+</body>
+</html>
