@@ -13,8 +13,12 @@ router.get("/login", (req, res) => {
     });
 });
 
+// Endpoint para mostrar la página de registro.
+// Envía el nombre de la sesión a la vista; si no hay sesión, username queda indefinido.
 router.get("/register", (req, res) => {
-    res.render("register")
+    res.render("register", {
+        username: req.session.user?.username
+    })
 });
 
 router.get('/protected', (req,res) =>{

@@ -34,9 +34,12 @@ app.use('/products', authProducts);
 app.use('/auth', authRoutes);
 app.use('/songs', authSongs);
 
+// Endpoint para mostrar la página principal.
+// Envía el nombre de la sesión a la vista; si no hay sesión, username queda indefinido.
 app.get('/',(req,res) => {
-    //const {user} = req.session
-    res.render("index")
+    res.render("index", {
+        username: req.session.user?.username
+    })
 })
 
 app.listen(PORT,()=>{

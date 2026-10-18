@@ -9,8 +9,16 @@
 <body>
     <h1>P1 Sistema complet amb autenticació i CRUD</h1>
     <p>Benvingut a la pagina principal</p>
-    <p>Per començar a utilitzar el CRUD si us plau fes login o register</p>
-    <a href="/auth/login"> Login </a>
-    <a href="/auth/register"> Register </a>
+
+    <%if (typeof username!='undefined') { %>
+        <p>Ves al panel d'administrador per fer servir el CRUD</p>
+        <a href="/auth/protected">Panal administrador</a>
+    <% } %>
+
+    <% if (typeof username==='undefined') { %>
+        <p>Per començar a utilitzar el CRUD si us plau fes login o register</p>
+        <a href="/auth/login"> Login </a>
+        <a href="/auth/register"> Register </a>
+    <% } %>
 </body>
 </html>
