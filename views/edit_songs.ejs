@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edita Producte</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>Editar Cançó: <%= song.title %></h1>
+    </header>
+    
+    <main>
+        <form action="/songs/<%= song.id %>?_method=PUT" method="POST">
+            <label for="name">Títol:</label>
+            <input type="text" id="title" name="title" value="<%= song.title %>" required>
+            
+            <label for="artist">Artitsta:</label>
+            <input type="text" id="artist" name="artist" value="<%= song.artist %>" required>
+
+            <button type="submit">Desar Canvis</button>
+        </form>
+        <a href="/songs">Tornar al llistat</a>
+    </main>
+</body>
