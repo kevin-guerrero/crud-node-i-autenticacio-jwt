@@ -3,8 +3,9 @@ import methodOverride from "method-override";
 import {PORT, SECRET_JWT_KEY} from "./config.js";
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
-import authProducts from './routes/products.js'
-import authRoutes from './routes/auth.js'
+import authProducts from './routes/products.js';
+import authRoutes from './routes/auth.js';
+import authSongs from './routes/songs.js';
 
 const app = express();
 app.use(express.json());
@@ -31,6 +32,7 @@ app.use((req, res, next) =>{
 
 app.use('/products', authProducts);
 app.use('/auth', authRoutes);
+app.use('/songs', authSongs);
 
 app.get('/',(req,res) => {
     //const {user} = req.session

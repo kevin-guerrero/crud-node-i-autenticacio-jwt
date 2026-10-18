@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cançons</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <main>
+        <section>
+            <h2>Lllista de productes</h2>
+            <ul class="products-list">
+                <% data.songs.forEach(song => { %>
+                    <li class="song-item">
+                        <strong><%= song.title %></strong>
+                        <span>Artist: <%= song.artist %></span>
+                        <a href="/songs/<%= song.id %>">Editar</a>
+                        <form action="/songs/<%= song.id %>?_method=DELETE" method="POST">
+                            <button type="submit">Esborrar canço</button>
+                        </form>
+                    </li>
+                <% }) %>
+                <a href="/songs/create_song">Crear</a>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
