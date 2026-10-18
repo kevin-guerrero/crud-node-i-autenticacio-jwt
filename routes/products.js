@@ -95,7 +95,7 @@ router.delete("/:id", (req, res) => {
     // que li indiqui al segon argument, en aquest cas 1
     data.products.splice(productIndex, 1);
     writeData(data);
-    res.json({ message: "Product deleted successfully" });
+    res.redirect("/products");
 });
 
 router.use(express.static("public")); //carpeta publica pel css

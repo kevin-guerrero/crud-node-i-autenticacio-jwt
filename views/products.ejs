@@ -18,6 +18,9 @@
                         <span>Categoria: <%= products.category %></span>
                         <span>Preu: €<%= products.price %></span>
                         <a href="/products/<%= products.id %>">Editar</a>
+                        <form action="/products/<%= products.id %>?_method=DELETE" method="POST">
+                            <button type="submit">Esborrar producte</button>
+                        </form>
                     </li>
                 <% }) %>
                 <a href="/products/create_product">Crear</a>
