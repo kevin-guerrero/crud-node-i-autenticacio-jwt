@@ -1,16 +1,78 @@
 {
-    "products": [
-        {
-            "id": 1,
-            "name": "Shirt",
-            "price": "15.99",
-            "category" : "Clothes"
-        },
-        {
-            "id": 2,
-            "name": "Jeans",
-            "price": "19.99",
-            "category" : "Clothes"
-        }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "Shirt",
+      "price": "15.99",
+      "category": "Clothes"
+    },
+    {
+      "id": 2,
+      "name": "Jeans",
+      "price": "19.99",
+      "category": "Clothes"
+    }
+  ],
+  "songs": [
+    {
+      "id": 1,
+      "title": "Accidentally in Love",
+      "artist": "Counting Crows"
+    },
+    {
+      "id": 2,
+      "title": "Flightless Bird, American Mouth",
+      "artist": "Iron & Wine"
+    },
+    {
+      "id": 3,
+      "title": "Perfect",
+      "artist": "Ed Sheeran"
+    },
+    {
+      "id": 4,
+      "title": "A Real Hero",
+      "artist": "College & Electric Youth"
+    },
+    {
+      "id": 5,
+      "title": "Nightcall",
+      "artist": "Kavinsky"
+    },
+    {
+      "id": 6,
+      "title": "Under Your Spell",
+      "artist": "Desire"
+    },
+    {
+      "id": 7,
+      "title": "Midnight City",
+      "artist": "M83"
+    },
+    {
+      "id": 8,
+      "title": "Ultraviolence",
+      "artist": "Lana Del Rey"
+    },
+    {
+      "id": 9,
+      "title": "Let Down",
+      "artist": "Radiohead"
+    },
+    {
+      "id": 10,
+      "title": "Creep",
+      "artist": "Radiohead"
+    },
+    {
+      "id": 11,
+      "title": "Something in the Way",
+      "artist": "Nirvana"
+    },
+    {
+      "id": 12,
+      "title": "Come as You Are",
+      "artist": "Nirvana"
+    }
+  ]
 }
