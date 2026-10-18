@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creació de producte</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Crear Producte nou</h1>
+    <main>
+        <form action="/products" method="POST">
+            <label for="name">Nom:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="category">Categoria:</label>
+            <input type="text" id="category" name="category" required>
+
+            <label for="price">Preu (€):</label>
+            <input type="number" id="price" name="price" step="0.01" required>
+
+            <button type="submit">Afegir producte</button>
+        </form>
+        <a href="/products">Tornar al llistat</a>
+    </main>
+</body>
+</html>

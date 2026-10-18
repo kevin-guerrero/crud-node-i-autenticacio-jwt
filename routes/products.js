@@ -36,6 +36,18 @@ router.get("/", (req, res) => {
     res.render("products", { data })
 });
 
+/* 
+Creem un endpoint per obtenir la pàgina per crear un producte.
+Es posa abans de /:id perquè Express comprova les rutes en ordre i /:id
+també coincidiria amb /create_product, com si fos un identificador.
+*/
+router.get("/create_product", (req, res) => {
+    if (!req.session.user) {
+        return res.status(401).send('Acces no autorizat')
+    }
+    res.render("create_product");
+})
+
 //Creem un endpoint per obtenir un producte per un id
 router.get("/:id", (req, res) => {
     const data = readData();
@@ -57,7 +69,7 @@ router.post("/", (req, res) => {
     };
     data.products.push(newProduct);
     writeData(data);
-    res.json(newProduct);
+    res.redirect("/products");
 });
 
 //Creem un endpoint per modificar un producte
