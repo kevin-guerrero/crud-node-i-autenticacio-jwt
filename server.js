@@ -1,4 +1,4 @@
-import express, { request } from "express";
+import express from "express";
 import methodOverride from "method-override";
 import {PORT, SECRET_JWT_KEY} from "./config.js";
 import jwt from "jsonwebtoken";

@@ -1,6 +1,5 @@
 import express from "express";
 import fs from "fs"; //treballar amb arxius
-import bodyParser from "body-parser"; //Ho afegim per entendre que estem rebent un json des de la petició post.
 
 const router = express.Router();
 

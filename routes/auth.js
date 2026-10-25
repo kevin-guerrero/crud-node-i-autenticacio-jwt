@@ -1,6 +1,6 @@
-import express, {request} from "express";
+import express from "express";
 import { UserRepository } from "../user-repository.js";
-import { PORT, SECRET_JWT_KEY } from "../config.js";
+import { SECRET_JWT_KEY } from "../config.js";
 import jwt from "jsonwebtoken";
 
 const router = express.Router();
