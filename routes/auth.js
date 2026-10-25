@@ -56,14 +56,25 @@ router.post('/login', async (req,res)=>{
 });
 
 router.post('/register', async (req,res)=>{
-    //aqui el body es el cuerpo de la petición
-    const {username,password}=req.body
-    console.log(req.body)
+    const {username,password} = req.body
+    
     try{
         const id= await UserRepository.create({username,password});
-        res.send({id})
+        const token = jwt.sign(
+            {id, username},
+            SECRET_JWT_KEY,
+            {expiresIn: '1h'}
+        );
+
+        res.cookie('access_token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict',
+            maxAge: 1000 * 60 * 60
+        });
+
+        res.send({ id });
     }catch(error){
-        //No es buena idea mandar el error del repositorio
         res.status(400).send(error.message)
     }
 });
