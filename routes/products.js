@@ -3,6 +3,13 @@ import fs from "fs"; //treballar amb arxius
 
 const router = express.Router();
 
+router.use((req, res, next) => {
+    if (!req.session.user) {
+        return res.status(401).send('Acces no autorizat');
+    }
+    next();
+});
+
 //Funció per llegir la informació
 const readData = () => {
     try {
@@ -29,9 +36,6 @@ const writeData = (data) => {
 //Creem un endpoint per obtenir tots els productes
 router.get("/", (req, res) => {
     const data = readData();
-    if (!req.session.user) {
-        return res.status(401).send('Acces no autorizat')
-    }
     res.render("products", { data })
 });
 
@@ -41,9 +45,6 @@ Es posa abans de /:id perquè Express comprova les rutes en ordre i /:id
 també coincidiria amb /create_product, com si fos un identificador.
 */
 router.get("/create_product", (req, res) => {
-    if (!req.session.user) {
-        return res.status(401).send('Acces no autorizat')
-    }
     res.render("create_product");
 })
 
