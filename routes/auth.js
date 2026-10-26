@@ -73,7 +73,7 @@ router.post('/register', async (req,res)=>{
             maxAge: 1000 * 60 * 60
         });
 
-        res.send({ id });
+        res.send({ id, username, token });
     }catch(error){
         res.status(400).send(error.message)
     }
